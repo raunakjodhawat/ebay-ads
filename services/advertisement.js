@@ -1,5 +1,6 @@
 const db = require('../db');
 const impressionsService = require('./impressions');
+const clickService = require('./clicks');
 
 async function createNewAdvertisement(adMeta) {
     try {
@@ -26,10 +27,15 @@ async function getRandomAdvertisement() {
     // we will choose 80% of the time, most viewed ads, and 20% least viewed ads
     const sortDirection = probabilityCount[Math.floor(Math.random() * 5)];
 
-    const randomlyChoosenAdId = await impressionsService.getAdImpression(sortDirection);
-    const randomAdd = await db.advertisements.findOne({_id: randomlyChoosenAdId});
-    await impressionsService.createImpression(randomlyChoosenAdId, 100234);
+    const _addId = await impressionsService.getAdImpression(sortDirection);
+    const randomAdd = await db.advertisements.findOne({_id: _addId});
+    await impressionsService.createImpression(_addId, 100234);
 
+    const wasAddClicked = probabilityCount[Math.floor(Math.random() * 5)] === -1; // 20% ads will be clicked
+    if(wasAddClicked) {
+        console.log("Click is created");
+        await clickService.setAdClick(_addId);
+    }
     return randomAdd;
 }
 

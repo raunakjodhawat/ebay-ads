@@ -16,3 +16,10 @@ BODY {
     "category": "shoes",
     "creator": "raunak"
 }
+
+2. DELETE http://localhost:8080/api/v1/ads/:addID
+3. GET http://localhost:8080/api/v1/ads
+
+
+## Extra functionality
+1. added logger middleware which logs all incoming request

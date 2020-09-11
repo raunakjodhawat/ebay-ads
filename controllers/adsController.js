@@ -1,4 +1,3 @@
-const { response } = require('express');
 const express = require('express');
 const advertisementService = require('../services/advertisement');
 
@@ -25,7 +24,7 @@ class AdsController {
 
     static async getAd(req, res) {
         const response = await advertisementService.getRandomAdvertisement();
-        
+
         return await res.send({response});
     }
 

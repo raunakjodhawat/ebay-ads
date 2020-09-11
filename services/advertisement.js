@@ -1,9 +1,13 @@
 const db = require('../db');
 
 async function createNewAdvertisement(adMeta) {
-    const response = await db.advertisements.insertMany(adMeta);
-    if(response) {
-        return response;
+    try {
+        const response = await db.advertisements.insertMany(adMeta);
+        if(response) {
+            return response;
+        }
+    } catch (error) {
+        throw error;
     }
     return undefined;
 }

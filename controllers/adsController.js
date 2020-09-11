@@ -11,8 +11,14 @@ class AdsController {
     }
 
     static async createAd(req, res) {
-        const response = await advertisementService.createNewAdvertisement(req.body);
-        res.send({response});
+        try {
+            const response = await advertisementService.createNewAdvertisement(req.body);
+            if(response) {
+                res.send({response});
+            }
+        } catch (error) {
+            return res.status(404).json({ message: 'Unable to Create Advertisement' });
+        }
     }
 
     static async getAd(req, res) {

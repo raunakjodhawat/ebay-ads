@@ -16,5 +16,6 @@ const logs = ebayAdsCollection.model('Logs', loggerSchema);
 module.exports = {
     advertisements,
     impressions,
-    logs
+    logs,
+    ObjectId: mongoose.Types.ObjectId
 }

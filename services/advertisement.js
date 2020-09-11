@@ -12,6 +12,15 @@ async function createNewAdvertisement(adMeta) {
     return undefined;
 }
 
+async function deleteAdvertisement(deleteId) {
+    try {
+        return await db.advertisements.deleteOne({_id: db.ObjectId(deleteId)});
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
-    createNewAdvertisement
+    createNewAdvertisement,
+    deleteAdvertisement
 }

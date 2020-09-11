@@ -1,6 +1,6 @@
-import Express from 'express';
-import Ads from './AdsController';
-import Logger from '../middlewares/loggerMiddleware';
+const Express = require('express');
+const Ads = require('./AdsController');
+const Logger = require('../middlewares/loggerMiddleware');
 
 class Controller {
   constructor() {
@@ -8,7 +8,7 @@ class Controller {
     try {
       this.router.use('/api/v1/', [
         Express.json(),
-        new Logger.LoggerMiddleWare(),
+        Logger.logIncomingRequest,
         new Ads.AdsController(),
       ]);
     } catch (e) {
@@ -19,7 +19,7 @@ class Controller {
   }
 }
 
-export default {
-  Controller,
+module.exports = {
+    Controller
 };
 

@@ -1,6 +1,6 @@
-import Express from 'express';
-import Config from './config';
-import Controller from './controllers/_controllerManager';
+const Express = require('express');
+const Config = require('./config');
+const Controller = require('./controllers/_controllerManager');
 
 // Build a basic express app
 const app = Express();

@@ -1,4 +1,4 @@
-import Express from 'express';
+const Express = require('express');
 
 class AdsController {
     constructor() {
@@ -17,6 +17,7 @@ class AdsController {
     }
 }
 
-export default {
-    AdsController,
+module.exports = {
+    AdsController
 };
+

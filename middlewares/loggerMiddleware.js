@@ -1,10 +1,9 @@
 // Logger middleware, logs all incoming requests
-class LoggerMiddleWare {
-    static async logIncomingRequest(req, res, next) {
+
+async function logIncomingRequest(req, res, next) {
         
-    }
 }
 
-export default {
-    LoggerMiddleWare,
+module.exports = {
+    logIncomingRequest,
 };

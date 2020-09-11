@@ -4,10 +4,12 @@
   "description": "Ebay Advertisement team, sample project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "dependencies": {
-    "express": "4.17.1"
+    "express": "4.17.1",
+    "nodemon": "^2.0.4"
   },
   "author": "Raunak Jodhawat",
   "license": "ISC"

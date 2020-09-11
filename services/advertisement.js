@@ -1,4 +1,5 @@
 const db = require('../db');
+const impressionsService = require('./impressions');
 
 async function createNewAdvertisement(adMeta) {
     try {
@@ -20,7 +21,20 @@ async function deleteAdvertisement(deleteId) {
     }
 }
 
+async function getRandomAdvertisement() {
+    const probabilityCount = [1, 1, 1, 1, -1]; // 4: 1 => 80:20
+    // we will choose 80% of the time, most viewed ads, and 20% least viewed ads
+    const sortDirection = probabilityCount[Math.floor(Math.random() * 5)];
+
+    const randomlyChoosenAdId = await impressionsService.getAdImpression(sortDirection);
+    const randomAdd = await db.advertisements.findOne({_id: randomlyChoosenAdId});
+    await impressionsService.createImpression(randomlyChoosenAdId, 100234);
+
+    return randomAdd;
+}
+
 module.exports = {
     createNewAdvertisement,
-    deleteAdvertisement
+    deleteAdvertisement,
+    getRandomAdvertisement
 }

@@ -24,7 +24,9 @@ class AdsController {
     }
 
     static async getAd(req, res) {
-
+        const response = await advertisementService.getRandomAdvertisement();
+        
+        return await res.send({response});
     }
 
     static async deleteAd(req, res) {

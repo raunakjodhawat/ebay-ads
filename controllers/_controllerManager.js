@@ -1,15 +1,15 @@
-const Express = require('express');
-const Ads = require('./AdsController');
-const Logger = require('../middlewares/loggerMiddleware');
+const express = require('express');
+const ads = require('./AdsController');
+const logger = require('../middlewares/loggerMiddleware');
 
 class Controller {
   constructor() {
-    this.router = Express.Router();
+    this.router = express.Router();
     try {
       this.router.use('/api/v1/', [
-        Express.json(),
-        Logger.logIncomingRequest,
-        new Ads.AdsController(),
+        express.json(),
+        logger.logIncomingRequest,
+        new ads.AdsController(),
       ]);
     } catch (e) {
       console.error(e);

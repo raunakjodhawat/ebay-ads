@@ -1,7 +1,7 @@
 const db = require('../db');
 
-async function createLog(logMeta) {
-    await db.logs.insertMany({logs: logMeta});
+function createLog(logMeta) {
+    db.logs.insertMany({logs: logMeta});
 }
 
 module.exports = {

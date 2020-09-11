@@ -9,7 +9,7 @@ class AdsController {
     }
 
     static async createAd(req, res) {
-
+        
     }
 
     static async getAd(req, res) {
